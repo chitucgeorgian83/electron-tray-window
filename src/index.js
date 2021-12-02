@@ -110,12 +110,6 @@ function setWindowUrl(windowUrl) {
 
 function setWindowAutoHide() {
   window.hide();
-  window.on("blur", () => {
-    if (!window.webContents.isDevToolsOpened()) {
-      window.hide();
-      ipcMain.emit("tray-window-hidden", { window: window, tray: tray });
-    }
-  });
   window.on("close", function(event) {
     event.preventDefault();
     window.hide();
